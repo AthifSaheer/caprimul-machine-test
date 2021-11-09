@@ -6,6 +6,7 @@ This is machine test of Caprimul technologies Pvt Ltd. Used technology Django an
 ### Built With
 
 * Backend - `Python Django`
+* Frontend - `HTML CSS JS`
 
 <!-- GETTING STARTED -->
 ## Getting Started
