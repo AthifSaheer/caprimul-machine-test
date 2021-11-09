@@ -1,5 +1,5 @@
 # Caprimul Machine Test
-This is machine test of Zinfog codelabs. Used technology Django and HTML, CSS and JS.
+This is machine test of Caprimul technologies Pvt Ltd. Used technology Django and HTML, CSS and JS.
 
 - Clone The project :- https://github.com/AthifSaheer/caprimul-machine-test/
 
