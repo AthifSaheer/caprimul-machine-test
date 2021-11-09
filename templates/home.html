@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card" style="width: 22rem; margin: auto;">
+        <div class="card-body">
+            <h5 class="card-title">TODO LIST</h5>
+        </div>
+        <div class="card-body">
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="text" value="{{ todo.text }}" placeholder="Type...">
+                <button>Add</button>
+            </form>
+            <small class="text-danger">{{ error }}</small>
+
+            {% for todo in todos %}
+                <div class="border mt-2">
+                    <p class="card-link" id="f">{{ todo.text }}</p>
+                    <a href="{% url 'delete' todo.id %}" class="card-link">DELETE</a>
+                    <a href="{% url 'edit' todo.id %}" class="card-link">EDIT</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+<div class="d-flex">
+                {% if request.user.is_authenticated %}
+                    <p class="m-1 mt-2">Hai {{ request.user.username }} 👋</p>
+                    {% comment %} <a href="{% url 'profile_view' request.user.id %}"><p class="m-1">Profile</p></a> {% endcomment %}
+                    <a href="{% url 'logout' %}"><p class="m-1">Logout</p></a>
+                {% else %}
+                    <a href="{% url 'login' %}"><p class="m-1">Login</p></a>
+                    <a href="{% url 'register' %}"><p class="m-1">signup</p></a>
+                {% endif %}
+            </div>
+
+
+<script>
+    var contents = $('#f').innerHTML = "fw";
+    $(document).ready(function(){
+        alert('gid')
+    });
+
+    $.ajax({
+        url : "",
+        method : 'POST',
+        data : {
+            csrfmiddlewaretoken: "{{ csrf_token }}",
+            displyQuantity:displyQuantity,
+            cartProductID:cartProductID,
+        },
+        dataType: "json",
+        success : function(data){
+            if (data.max_error){
+                alert(data.max_error)
+            } else {
+                // alert("---quantity: " + data.success_quantity)
+                $("#displayQuantity_"+id).val(data.success_quantity)
+                $("#each_ttl_price_"+id).text("₹"+data.produc_total_price)
+                $(".all_ttl_price").html("₹"+data.grand_total)
+                console.log("------- IncrementQuantity func finished-----------")
+            }
+        },
+    })
+</script>
