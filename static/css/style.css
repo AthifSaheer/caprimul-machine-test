@@ -60,8 +60,6 @@ input {
     display: flex;
 }
 
-.task-wrapper {
-    
+.textdiv {
+    width: 430px;
 }
-
-
