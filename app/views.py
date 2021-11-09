@@ -46,5 +46,14 @@ def delete(request, id):
         todo.delete()
         return redirect('home')
 
+def finished(request, id):
+    if request.method == 'GET':
+        try:
+            todo = Todo.objects.get(id=id)
+        except Todo.DoesNotExist:
+            return render(request, 'home.html', {'error': "Something went wrong!"})
+        todo.done = True
+        todo.save()
+        return redirect('home')
 
 
